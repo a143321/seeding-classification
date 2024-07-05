@@ -1,15 +1,16 @@
+"""VGG16を用いて、苗を分類するモジュール"""
+
 import os
-import tensorflow as tf
+import numpy as np
 from flask import Flask, request, redirect, render_template, flash
 from werkzeug.utils import secure_filename
+import tensorflow as tf
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 import numpy as np
 
-print(tf.__version__)  # 2.1.0
-
 classes = ["かぼちゃ", "ピーマン", "トマト"]
-image_size = 256
+image_size = 64
 
 UPLOAD_FOLDER = "uploads"
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
@@ -18,10 +19,12 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.secret_key = 'supersecretkey'
 
+print(tf.__version__)
+
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-model = load_model('./my_model_20240705_074144.h5', compile=False)
+model = load_model('./my_model_20240705_115305.h5', compile=False)
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
