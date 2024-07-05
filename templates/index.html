@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Number Classifier</title>
+    <link rel="stylesheet" href="./static/stylesheet.css">
+</head>
+<body>
+    <header>   
+        <img class="header_img" src="https://aidemyexstorage.blob.core.windows.net/aidemycontents/1621500180546399.png" alt="Aidemy">
+        <a class="header-logo" href="#">Number Classifier</a>
+    </header>
+
+    <div class="main">    
+        <h2> AIが送信された画像の野菜苗(カボチャ・ピーマン・トマト)を判別します</h2>
+        <p>画像を送信してください</p>
+        <form method="POST" enctype="multipart/form-data">
+            <input class="file_choose" type="file" name="file" id="fileInput">
+            <input class="btn" value="submit!" type="submit">
+        </form>
+        <div class="answer" id="answer">{{answer}}</div>
+
+        <!-- 画像プレビューを表示するための要素 -->
+        <div class="image-preview" id="imagePreview">
+            <img src="#" alt="Image Preview" class="image-preview__image" style="display: none;">
+        </div>
+    </div>
+
+    <footer>
+        <img class="footer_img" src="https://aidemyexstorage.blob.core.windows.net/aidemycontents/1621500180546399.png" alt="Aidemy">
+        <small>&copy; 2019 Aidemy, inc.</small>   
+    </footer>
+
+    <script>
+        // ファイル選択時にプレビューを表示するためのJavaScript
+        const fileInput = document.getElementById('fileInput');
+        const imagePreview = document.getElementById('imagePreview');
+        const answerInput= document.getElementById('answer');
+        const previewImage = imagePreview.querySelector('.image-preview__image');
+
+        fileInput.addEventListener('change', function() {
+            const file = this.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+                previewImage.style.display = 'block';
+
+                reader.addEventListener('load', function() {
+                    previewImage.setAttribute('src', this.result);
+                });
+                reader.readAsDataURL(file);
+
+                // Answerを非表示にする
+                answerInput.style.visibility = "hidden"
+            } else {
+                previewImage.style.display = null;
+                // Answerを非表示にする
+                answerInput.style.visibility = "hidden"
+            }
+        }); 
+    </script>
+</body>
+</html>
