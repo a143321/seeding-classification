@@ -37,3 +37,7 @@ To run this project locally, install the required modules listed in `requirement
     pip install -r requirements_local_240705.txt
     ```
 
+## images
+![initial window](images/description_image1.png)
+![load image](images/description_image2.png)
+![submit image](images/description_image3.png)
