@@ -1,6 +1,11 @@
 # Seedling Classification Using VGG16 Model
 This project utilizes the VGG16 model to classify images of seedlings into three categories: pumpkin, green pepper, and tomato. By uploading an image and pressing the submit button, the model will provide the classification result.
 
+## Folder Structure
+- **notebooks/**: Jupyter notebooks for model creation and experimentation.
+  - **model_creation.ipynb**: Notebook for building and training the classification model.
+- **models/**: Directory for saving trained models.
+
 ## Getting Started
 
 ### Render Environment
@@ -41,3 +46,4 @@ To run this project locally, install the required modules listed in `requirement
 ![initial window](images/description_image1.png)
 ![load image](images/description_image2.png)
 ![submit image](images/description_image3.png)
+
